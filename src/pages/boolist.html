@@ -1,0 +1,166 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/style/output.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <nav class="bg-green-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="/src/asset/image.png" class="h-25 w-24" alt="Logo" />
+            </a>
+
+            <button id="menu-toggle" class="text-white text-3xl md:hidden">
+                &#9776;
+            </button>
+
+            <ul id="menu"
+                class="hidden md:flex md:space-x-6 md:items-center bg-gray-700 md:bg-transparent w-full md:w-auto absolute md:static top-16 md:top-0 left-0 md:flex-row flex-col text-white font-bold p-4 md:p-0">
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">About</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Book list</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Blog</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Authors</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">FAQ</a>
+                </li>
+
+                <li>
+                    <button
+                        class="bg-yellow-400 text-white px-6 py-2 rounded text-lg font-bold hover:bg-cyan-500 transition duration-500 w-full md:w-auto">
+                        Contact Us
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mx-auto p-4">
+        <!-- Navigation and Search Bar -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="relative w-full max-w-md">
+                <input type="text" id="searchInput" placeholder="Search in BookNet"
+                    class="w-full p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Categories and Category Dropdown -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex space-x-4">
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Novels</button>
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Education</button>
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Kids</button>
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Coding</button>
+            </div>
+            <div class="relative">
+                <button id="categoryDropdown"
+                    class="px-4 py-2 bg-orange-400 text-white rounded flex items-center hover:bg-orange-500">
+                    Categories <i class="fas fa-caret-down ml-2"></i>
+                </button>
+                <div id="categoryMenu" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg hidden">
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Selling</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Bidding</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Exchange</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Grid -->
+        <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Book cards will be dynamically inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <!-- JavaScript for API, interactivity, and buy functionality -->
+    <script>
+        // Open Library API endpoint for searching books (example)
+        const API_URL = 'https://openlibrary.org/search.json?q=';
+
+        // Function to fetch books from Open Library API
+        async function fetchBooks(query = 'fiction') {
+            try {
+                const response = await fetch(`${API_URL}${encodeURIComponent(query)}&limit=8`);
+                const data = await response.json();
+                displayBooks(data.docs);
+            } catch (error) {
+                console.error('Error fetching books:', error);
+                alert('Failed to load books. Please try again later.');
+            }
+        }
+
+        // Function to display books in the grid
+        function displayBooks(books) {
+            const bookGrid = document.getElementById('bookGrid');
+            bookGrid.innerHTML = ''; // Clear existing content
+
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow';
+                bookCard.innerHTML = `
+                            <img src="https://covers.openlibrary.org/b/id/${book.cover_i || '0'}-M.jpg" alt="${book.title}" class="w-full h-64 object-cover mb-4 rounded">
+                            <h3 class="text-lg font-semibold text-gray-800">${book.title || 'Book Name'}</h3>
+                            <p class="text-gray-600 mb-2">${book.author_name?.[0] || 'Author\'s Name'}</p>
+                            <div class="flex items-center mb-2">
+                                <span class="text-yellow-500">★★★★★</span> <!-- Static rating for now -->
+                            </div>
+                            <p class="text-green-600 font-bold">Rs. 500.00</p>
+                            <button class="mt-4 w-full bg-orange-500 text-white py-2 rounded-full hover:bg-orange-600 transition duration-300 buy-button" data-book="${book.title}">Buy Now</button>
+                        `;
+                bookGrid.appendChild(bookCard);
+            });
+
+            // Add event listeners to "Buy Now" buttons after they are created
+            document.querySelectorAll('.buy-button').forEach(button => {
+                button.addEventListener('click', handleBuyNow);
+            });
+        }
+
+        // Function to handle "Buy Now" click
+        function handleBuyNow(event) {
+            const bookTitle = event.target.getAttribute('data-book');
+            const confirmation = confirm(`Would you like to purchase "${bookTitle}" for Rs. 500.00?`);
+
+            if (confirmation) {
+                alert(`Purchase of "${bookTitle}" confirmed! Redirecting to payment...`);
+                // In a real app, redirect to a payment gateway or backend
+                // Example: window.location.href = `https://your-payment-gateway.com/checkout?book=${encodeURIComponent(bookTitle)}&price=500`;
+            } else {
+                alert(`Purchase of "${bookTitle}" cancelled.`);
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            fetchBooks(e.target.value);
+        });
+
+        // Category dropdown toggle
+        document.getElementById('categoryDropdown').addEventListener('click', () => {
+            document.getElementById('categoryMenu').classList.toggle('hidden');
+        });
+
+        // Initial fetch (default to "fiction" books)
+        fetchBooks('fiction');
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

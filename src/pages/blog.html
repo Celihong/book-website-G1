@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Header</title>
+    <link rel="stylesheet" href="/src/style/output.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body class="font-serif">
+    <nav class="bg-green-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="/src/asset/image.png" class="h-25 w-24" alt="Logo" />
+            </a>
+
+            <button id="menu-toggle" class="text-white text-3xl md:hidden">
+                &#9776;
+            </button>
+
+            <ul id="menu"
+                class="hidden md:flex md:space-x-6 md:items-center bg-gray-700 md:bg-transparent w-full md:w-auto absolute md:static top-16 md:top-0 left-0 md:flex-row flex-col text-white font-bold p-4 md:p-0">
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">About</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Book list</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Blog</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">Authors</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-4 hover:text-yellow-500">FAQ</a>
+                </li>
+
+                <li>
+                    <button
+                        class="bg-yellow-400 text-white px-6 py-2 rounded text-lg font-bold hover:bg-cyan-500 transition duration-500 w-full md:w-auto">
+                        Contact Us
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        document
+            .getElementById("menu-toggle")
+            .addEventListener("click", function () {
+                let menu = document.getElementById("menu");
+                menu.classList.toggle("hidden");
+            });
+    </script>
+    <div class="bg-gradient-to-b from-green-200 to-green-400 min-h-screen flex items-center justify-center">
+        <main class="container mx-auto p-4 flex flex-col md:flex-row items-center justify-center gap-8">
+            <!-- Text Section -->
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    Getting Your
+                    <br>
+                    New Book With
+                    <br> The Best Prices!!
+                </h1>
+                <a href="#"
+                    class="inline-block bg-yellow-500 text-white px-6 py-3 rounded-full font-bold hover:bg-yellow-600 transition duration-300">
+                    Find now!!
+                </a>
+            </div>
+            <!-- Book Image Section -->
+            <div class="flex justify-center">
+                <img src="/src/asset/Skipping Christmas.jpeg" alt="Skipping Christmas by John Grisham"
+                    class="max-w-full h-auto object-contain md:w-64 lg:w-80 ">
+            </div>
+        </main>
+    </div>
+    <!-- Newest Books Section with AOS Animation and Hover -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold text-green-800 mb-6 text-center">Newest Books</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/The film.jpeg" alt="The Firm by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">The Firm</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="200" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/a time to kiss.jpeg" alt="A Time to Kill by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">A Time to Kill</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="300" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/Skipping Christmas.jpeg" alt="Skipping Christmas by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">Skipping Christmas</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+        </div>
+    </section>
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold text-green-800 mb-6 text-center"> Best-Selling</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/The film.jpeg" alt="The Firm by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">The Firm</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="200" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/harry potter.jpg" alt="A Time to Kill by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">A Time to Kill</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="300" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/inspired3.png" alt="Skipping Christmas by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">The other side of me</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+        </div>
+    </section>
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold text-green-800 mb-6 text-center"> Best Motivate books</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/nspired1.png" alt="The Firm by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">Bloodline</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="200" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/inspired2.png" alt="A Time to Kill by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">Windmils of the gods</p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+            <div class="flex flex-col items-center max-w-xs h-full transform transition duration-300 ease-in-out hover:scale-105"
+                data-aos="fade-up" data-aos-delay="300" data-aos-duration="800" data-aos-once="true">
+                <div class="w-48 h-72 bg-gray-200 mb-4 overflow-hidden">
+                    <img src="/src/asset/inspired4.png" alt="Skipping Christmas by John Grisham"
+                        class="w-full h-full object-cover">
+                </div>
+                <p class="text-center text-gray-700 mb-4">Master of game </p>
+                <button
+                    class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition duration-300">See
+                    More</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true, // Animation triggers only once
+        offset: 200, // Offset (in pixels) from the top of the viewport
+        duration: 800, // Duration of the animation
+    });
+</script>
+
+</html>
