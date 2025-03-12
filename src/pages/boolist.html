@@ -95,7 +95,7 @@
         // Function to fetch books from Open Library API
         async function fetchBooks(query = 'fiction') {
             try {
-                const response = await fetch(`${API_URL}${encodeURIComponent(query)}&limit=8`);
+                const response = await fetch(`${API_URL}${encodeURIComponent(query)}&limit=40`);
                 const data = await response.json();
                 displayBooks(data.docs);
             } catch (error) {
