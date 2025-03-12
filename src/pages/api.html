@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      const bookTitle = "Harry Potter";
+
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookTitle}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Books Found:", data);
+          document.body.innerHTML = `<h1>📖 ${data.items[0].volumeInfo.title}</h1>`;
+        })
+        .catch((error) => console.error("Error:", error));
+    </script> -->
+    <script>
+      fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:J.K. Rowling`
+      )
+        .then((response) => response.json())
+        .then((data) => console.log("Books by J.K. Rowling:", data))
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>
