@@ -1,571 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
-    <title>Home Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="stylesheet" href="./src/style/output.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  </head>
-  <style>
-    /* Google Fonts */
-    @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
-    /* Cursor */
-    .cursor {
-      position: relative;
-      width: 24em;
-      margin: 0 auto;
-      border-right: 2px solid rgba(255, 255, 255, 0.75);
-      font-size: 30px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      transform: translateY(-50%);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=, initial-scale=1.0" />
+  <title>Home Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="./src/style/output.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<style>
+  /* Google Fonts */
+  @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+  /* Cursor */
+  .cursor {
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255, 255, 255, 0.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+  }
+
+  /* Animation */
+  .typewriter-animation {
+    animation: typewriter 3s steps(50) 1s 1 normal both,
+      blinkingCursor 500ms steps(50) infinite normal;
+  }
+
+  @keyframes typewriter {
+    from {
+      width: 0;
     }
-    /* Animation */
-    .typewriter-animation {
-      animation: typewriter 3s steps(50) 1s 1 normal both,
-        blinkingCursor 500ms steps(50) infinite normal;
+
+    to {
+      width: 100%;
     }
-    @keyframes typewriter {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
+  }
+
+  @keyframes blinkingCursor {
+    from {
+      border-right-color: rgba(255, 255, 255, 0.75);
     }
-    @keyframes blinkingCursor {
-      from {
-        border-right-color: rgba(255, 255, 255, 0.75);
-      }
-      to {
-        border-right-color: transparent;
-      }
+
+    to {
+      border-right-color: transparent;
     }
-  </style>
-  <body>
-    <nav class="bg-green-800 relative">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="#" class="flex items-center space-x-2">
-          <img
-            src="./src/asset/images/image.png"
-            class="h-25 w-24"
-            alt="Logo"
-          />
-        </a>
+  }
+</style>
 
-        <button id="menu-toggle" class="text-white text-3xl md:hidden">
-          &#9776;
-        </button>
+<body>
+  <nav class="bg-green-800 relative">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-2">
+        <img src="./src/asset/images/image.png" class="h-25 w-24" alt="Logo" />
+      </a>
 
-        <ul
-          id="menu"
-          class="hidden z-50 md:flex md:space-x-6 md:items-center bg-gray-700 md:bg-transparent w-full md:w-auto absolute md:static top-16 md:top-0 left-0 md:flex-row flex-col text-white font-bold p-4 md:p-0"
-        >
-          <li>
-            <a href="#" class="block py-2 px-4 hover:text-yellow-500">Home</a>
-          </li>
-          <li>
-            <a
-              href="/src/pages/about.html"
-              class="block py-2 px-4 hover:text-yellow-500"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="/src/pages/boolist.html"
-              class="block py-2 px-4 hover:text-yellow-500"
-              >Book list</a
-            >
-          </li>
-          <li>
-            <a
-              href="/src/pages/blog.html"
-              class="block py-2 px-4 hover:text-yellow-500"
-              >Blog</a
-            >
-          </li>
-          <li>
-            <a
-              href="/src/pages/autors.html"
-              class="block py-2 px-4 hover:text-yellow-500"
-              >Authors</a
-            >
-          </li>
-          <li>
-            <a
-              href="/src/pages/faq.html"
-              class="block py-2 px-4 hover:text-yellow-500"
-              >FAQ</a
-            >
-          </li>
+      <button id="menu-toggle" class="text-white text-3xl md:hidden">
+        &#9776;
+      </button>
 
-          <li>
-            <button
-              class="bg-yellow-400 text-white px-6 py-2 rounded text-lg font-bold hover:bg-cyan-500 transition duration-500 w-full md:w-auto"
-            >
-              <a href="/src/pages/contact.html"> Contact Us</a>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <ul id="menu"
+        class="hidden z-50 md:flex md:space-x-6 md:items-center bg-gray-700 md:bg-transparent w-full md:w-auto absolute md:static top-16 md:top-0 left-0 md:flex-row flex-col text-white font-bold p-4 md:p-0">
+        <li>
+          <a href="#" class="block py-2 px-4 hover:text-yellow-500">Home</a>
+        </li>
+        <li>
+          <a href="src/pages/about.html" class="block py-2 px-4 hover:text-yellow-500">About</a>
+        </li>
+        <li>
+          <a href="src/pages/boolist.html" class="block py-2 px-4 hover:text-yellow-500">Book list</a>
+        </li>
+        <li>
+          <a href="src/pages/blog.html" class="block py-2 px-4 hover:text-yellow-500">Blog</a>
+        </li>
+        <li>
+          <a href="src/pages/autors.html" class="block py-2 px-4 hover:text-yellow-500">Authors</a>
+        </li>
+        <li>
+          <a href="src/pages/faq.html" class="block py-2 px-4 hover:text-yellow-500">FAQ</a>
+        </li>
 
-    <!-- video section  -->
-    <section
-      data-aos="fade-up"
-      class="relative w-full h-screen overflow-hidden"
-    >
-      <video
-        class="absolute top-0 left-0 w-full h-full object-cover"
-        autoplay
-        loop
-        muted
-        playsinline
-      >
-        <source src="./src/videos/book-catch-eyes-vdo.mp4" type="video/mp4" />
-      </video>
-
-      <!-- Hero Content -->
-      <div
-        class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center bg-black/50"
-      >
-        <div
-          class="relative flex flex-row justify-between items-center h-full px-6 text-center text-white-"
-        >
-          <h1
-            class="cursor typewriter-animation text-3xl sm:text-4xl md:text-5xl font-bold"
-          >
-            Welcome to Book Nest <br />
-            A Haven for Book Lovers
-          </h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Introduction section -->
-    <section data-aos="fade-up" class="bg-white py-12 px-6 md:px-12">
-      <div
-        class="container mx-auto flex flex-col md:flex-row items-center justify-between"
-      >
-        <!-- Text Content -->
-        <div class="md:w-1/2 mb-6 md:mb-0">
-          <h2 class="text-2xl md:text-3xl font-semibold mb-4">
-            Curated Reads Just for You
-          </h2>
-          <p class="text-gray-700 mb-6">
-            Explore our handpicked selections of books, from award-winning
-            novels to hidden gems. Looking for inspiration? Browse our staff
-            recommendations, reader favorites, and seasonal collections to find
-            your next great read.
-          </p>
+        <li>
           <button
-            class="bg-orange-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
+            class="bg-yellow-400 text-white px-6 py-2 rounded text-lg font-bold hover:bg-cyan-500 transition duration-500 w-full md:w-auto">
+            <a href="src/pages/contact.html"> Contact Us</a>
           </button>
-        </div>
-
-        <!-- Book Images -->
-        <div data-aos="fade-up" class="md:w-1/2 flex justify-center space-x-4">
-          <img
-            src="./src/asset/images/book1.jpg"
-            alt="Book 1"
-            class="w-24 md:w-32 lg:w-40"
-          />
-          <img
-            src="./src/asset/images/book2.jpg"
-            alt="Book 2"
-            class="w-24 md:w-32 lg:w-40"
-          />
-          <img
-            src="./src/asset/images/book3.jpg"
-            alt="Book 3"
-            class="w-24 md:w-32 lg:w-40"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- popular books section -->
-    <section data-aos="fade-up" class="bg-white py-12 px-6 md:px-12">
-      <div data-aos="fade-up" class="container mx-auto text-center">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-black">
-          Must-Read Popular Books
-        </h2>
-        <p
-          data-aos="fade-up"
-          class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto"
-        >
-          Discover the books that everyone is talking about! From bestselling
-          novels to critically acclaimed masterpieces, these books have captured
-          the hearts of readers worldwide. Whether you love thrilling mysteries,
-          heartwarming stories, or powerful self-help guides, our popular books
-          section has something for everyone!
-        </p>
-
-        <!-- Book Cards -->
-        <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Book 1 -->
-          <div class="bg-white shadow-lg rounded-lg p-6">
-            <img
-              src="./src/asset/images/book4.jpg"
-              alt="The 48 Laws of Power"
-              class="w-32 mx-auto mb-4"
-            />
-            <h3 class="font-bold text-lg">Beloved</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              This is a Pulitzer Prize-winning novel published in 1987. It tells
-              the haunting story of Sethe, an escaped slave living in Cincinnati
-              after the Civil War, and the supernatural presence of her deceased
-              daughter.
-            </p>
-          </div>
-
-          <!-- Book 2 -->
-          <div class="bg-white shadow-lg rounded-lg p-6">
-            <img
-              src="./src/asset/images/book5.jpg"
-              alt="The 48 Laws of Power"
-              class="w-32 mx-auto mb-4"
-            />
-            <h3 class="font-bold text-lg">Song of Solomon</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Published in 1977, this novel follows the life of Macon "Milkman"
-              Dead III as he embarks on a journey of self-discovery, tracing his
-              family history and heritage.
-            </p>
-          </div>
-
-          <!-- Book 3 -->
-          <div class="bg-white shadow-lg rounded-lg p-6">
-            <img
-              src="./src/asset/images/book6.jpg"
-              alt="The 48 Laws of Power"
-              class="w-32 mx-auto mb-4"
-            />
-            <h3 class="font-bold text-lg">Sula</h3>
-            <p class="text-gray-600 text-sm mt-2">
-              The story delves into themes of friendship, morality, and the
-              societal expectations placed on women, set against the backdrop of
-              a tight-knit Black community.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- detail section -->
-
-    <section
-      data-aos="fade-up"
-      class="max-w-5xl mx-auto p-6 flex flex-col md:flex-row items-center gap-6"
-    >
-      <div class="w-full md:w-1/2 relative">
-        <img
-          src="./src/asset/images/catch-eyes-img.png"
-          alt="Books Display"
-          class="rounded-xl shadow-lg w-full h-auto md:max-w-sm object-cover"
-        />
-      </div>
-      <div class="w-full md:w-1/2">
-        <h2 class="text-2xl font-bold text-gray-800 mb-3">
-          A World of Stories Awaits
-        </h2>
-        <p class="text-gray-600">
-          At Book Nest, we believe that every book holds the power to inspire,
-          educate, and transport you to new worlds. Whether you’re a passionate
-          book lover, a casual reader, or looking for the perfect gift, we have
-          something special for everyone.
-        </p>
-        <p class="text-gray-600 mt-3">
-          Explore our carefully curated collection of bestsellers, timeless
-          classics, thrilling adventures, and insightful non-fiction. From
-          page-turning fiction to life-changing self-help, our shelves are
-          filled with stories waiting to be discovered.
-        </p>
-      </div>
-    </section>
-
-    <!-- Explore Book section -->
-
-    <div data-aos="fade-up" class="container mx-auto text-center">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-black">
-        Explore Our Book Collection
-      </h2>
-      <p
-        data-aos="fade-up"
-        class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto"
-      >
-        Find the perfect book for you by browsing our diverse collection of
-        genres! Whether you love gripping mysteries, heartwarming romances,
-        thought-provoking non-fiction, or magical fantasy, we have something for
-        every reader.
-      </p>
+        </li>
+      </ul>
     </div>
-  </body>
+  </nav>
 
-  <!-- Explore Book Card -->
+  <!-- video section  -->
+  <section data-aos="fade-up" class="relative w-full h-screen overflow-hidden">
+    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline>
+      <source src="./src/videos/book-catch-eyes-vdo.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center bg-black/50">
+      <div class="relative flex flex-row justify-between items-center h-full px-6 text-center text-white-">
+        <h1 class="cursor typewriter-animation text-3xl sm:text-4xl md:text-5xl font-bold">
+          Welcome to Book Nest <br />
+          A Haven for Book Lovers
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction section -->
+  <section data-aos="fade-up" class="bg-white py-12 px-6 md:px-12">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+      <!-- Text Content -->
+      <div class="md:w-1/2 mb-6 md:mb-0">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">
+          Curated Reads Just for You
+        </h2>
+        <p class="text-gray-700 mb-6">
+          Explore our handpicked selections of books, from award-winning
+          novels to hidden gems. Looking for inspiration? Browse our staff
+          recommendations, reader favorites, and seasonal collections to find
+          your next great read.
+        </p>
+        <button class="bg-orange-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
+      </div>
+
+      <!-- Book Images -->
+      <div data-aos="fade-up" class="md:w-1/2 flex justify-center space-x-4">
+        <img src="./src/asset/images/book1.jpg" alt="Book 1" class="w-24 md:w-32 lg:w-40" />
+        <img src="./src/asset/images/book2.jpg" alt="Book 2" class="w-24 md:w-32 lg:w-40" />
+        <img src="./src/asset/images/book3.jpg" alt="Book 3" class="w-24 md:w-32 lg:w-40" />
+      </div>
+    </div>
+  </section>
 
   <!-- popular books section -->
   <section data-aos="fade-up" class="bg-white py-12 px-6 md:px-12">
-    <div class="container mx-auto text-center">
+    <div data-aos="fade-up" class="container mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-black">
+        Must-Read Popular Books
+      </h2>
+      <p data-aos="fade-up" class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto">
+        Discover the books that everyone is talking about! From bestselling
+        novels to critically acclaimed masterpieces, these books have captured
+        the hearts of readers worldwide. Whether you love thrilling mysteries,
+        heartwarming stories, or powerful self-help guides, our popular books
+        section has something for everyone!
+      </p>
+
       <!-- Book Cards -->
       <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Book 1 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book7.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto mb-4"
-          />
-          <h3 class="font-bold text-lg">A Man of the People</h3>
+          <img src="./src/asset/images/book4.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+          <h3 class="font-bold text-lg">Beloved</h3>
           <p class="text-gray-600 text-sm mt-2">
-            A political novel that explores corruption and power struggles in
-            post-colonial Africa through the story of a young man.
+            This is a Pulitzer Prize-winning novel published in 1987. It tells
+            the haunting story of Sethe, an escaped slave living in Cincinnati
+            after the Civil War, and the supernatural presence of her deceased
+            daughter.
           </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
         </div>
 
         <!-- Book 2 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book8.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto mb-4"
-          />
-          <h3 class="font-bold text-lg">Anthills of the Savannah</h3>
+          <img src="./src/asset/images/book5.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+          <h3 class="font-bold text-lg">Song of Solomon</h3>
           <p class="text-gray-600 text-sm mt-2">
-            A novel that examines the failure of leadership in post-independence
-            Africa, following the lives of three friends.
+            Published in 1977, this novel follows the life of Macon "Milkman"
+            Dead III as he embarks on a journey of self-discovery, tracing his
+            family history and heritage.
           </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
         </div>
 
         <!-- Book 3 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book9.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto mb-4"
-          />
-          <h3 class="font-bold text-lg">Home and Exile</h3>
+          <img src="./src/asset/images/book6.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+          <h3 class="font-bold text-lg">Sula</h3>
           <p class="text-gray-600 text-sm mt-2">
-            A memoir where Achebe reflects on African literature, colonialism,
-            and his personal journey as a writer.
+            The story delves into themes of friendship, morality, and the
+            societal expectations placed on women, set against the backdrop of
+            a tight-knit Black community.
           </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
-        </div>
-        <!-- Book 4 -->
-        <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book10.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto mb-4"
-          />
-          <h3 class="font-bold text-lg">
-            Harry Potter and the Deathly Hallows <br />
-          </h3>
-          <p>by J.K. Rowling</p>
-          <p class="text-gray-600 text-sm mt-2">
-            This is the final book in the Harry Potter series. It follows Harry,
-            Ron, and Hermione as they search for and destroy.
-          </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
-        </div>
-        <!-- Book 5 -->
-        <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book11.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto object-cover mb-4"
-          />
-          <h3 class="font-bold text-lg">
-            Harry Potter and the Half-Blood Prince <br />
-          </h3>
-          <p>by J.K. Rowling</p>
-          <p class="text-gray-600 text-sm mt-2">
-            In this sixth book, Harry learns more about Voldemort's past through
-            private lessons with Professor Dumbledore.
-          </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
-        </div>
-        <!-- Book 6 -->
-        <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
-          <img
-            src="./src/asset/images/book12.jpg"
-            alt="The 48 Laws of Power"
-            class="w-32 mx-auto mb-4"
-          />
-          <h3 class="font-bold text-lg">The Story of Maya Angelou <br /></h3>
-          <p>by Tiffany D. Jackson</p>
-          <p class="text-gray-600 text-sm mt-2">
-            This is a biography aimed at young readers, showcasing the life of
-            the legendary poet, writer, and civil rights activist Maya Angelou.
-          </p>
-          <button
-            class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >
-            Button
-          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- part section -->
-  <section data-aos="fade-up" class="py-12 px-4 md:px-8 lg:px-16">
-    <div data-aos="fade-up" class="text-center mb-8">
-      <h2 class="text-3xl font-bold text-gray-800">Our Partners</h2>
-      <p data-aos="fade-up" class="text-gray-600 mt-2">
-        We are proud to collaborate with these amazing organizations.
+  <!-- detail section -->
+
+  <section data-aos="fade-up" class="max-w-5xl mx-auto p-6 flex flex-col md:flex-row items-center gap-6">
+    <div class="w-full md:w-1/2 relative">
+      <img src="./src/asset/images/catch-eyes-img.png" alt="Books Display"
+        class="rounded-xl shadow-lg w-full h-auto md:max-w-sm object-cover" />
+    </div>
+    <div class="w-full md:w-1/2">
+      <h2 class="text-2xl font-bold text-gray-800 mb-3">
+        A World of Stories Awaits
+      </h2>
+      <p class="text-gray-600">
+        At Book Nest, we believe that every book holds the power to inspire,
+        educate, and transport you to new worlds. Whether you’re a passionate
+        book lover, a casual reader, or looking for the perfect gift, we have
+        something special for everyone.
+      </p>
+      <p class="text-gray-600 mt-3">
+        Explore our carefully curated collection of bestsellers, timeless
+        classics, thrilling adventures, and insightful non-fiction. From
+        page-turning fiction to life-changing self-help, our shelves are
+        filled with stories waiting to be discovered.
       </p>
     </div>
-    <div
-      data-aos="fade-up"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center"
-    >
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/aeon-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/book-public-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/national-book-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/national-library-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/book-store-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-      <div class="p-4 rounded-lg flex items-center justify-center">
-        <img
-          src="./src/asset/images/good-choice-logo.png"
-          alt="Partner Logo"
-          class="w-24 h-24 rounded-full object-cover"
-        />
-      </div>
-    </div>
   </section>
 
-  <!-- footer section -->
-  <footer data-aos="fade-up" class="bg-green-800 text-white pb-7">
-    <!-- Social Media Links -->
-    <div class="flex flex-wrap md:flex-nowrap text-center">
-      <a
-        href="#"
-        class="flex-1 bg-blue-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-blue-800"
-      >
-        <i class="fab fa-facebook mr-2"></i> Facebook
-      </a>
-      <a
-        href="#"
-        class="flex-1 bg-purple-600 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-purple-800"
-      >
-        <i class="fab fa-twitter mr-2"></i> Twitter
-      </a>
-      <a
-        href="#"
-        class="flex-1 bg-yellow-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-green-800 hover:bg-yellow-800"
-      >
-        <i class="fab fa-instagram mr-2"></i> Instagram
-      </a>
-    </div>
+  <!-- Explore Book section -->
 
-    <div class="container mx-auto px-4 mt-6">
-      <!-- Contact & Address -->
-      <div
-        class="flex flex-col md:flex-row justify-around items-center text-center md:text-left"
-      >
-        <div class="font-bold">
-          <p>Phone: +855 96 168 755</p>
-          <p>Email: book.nest168@gmail.com</p>
-        </div>
+  <div data-aos="fade-up" class="container mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-black">
+      Explore Our Book Collection
+    </h2>
+    <p data-aos="fade-up" class="text-gray-700 mb-8 text-lg max-w-2xl mx-auto">
+      Find the perfect book for you by browsing our diverse collection of
+      genres! Whether you love gripping mysteries, heartwarming romances,
+      thought-provoking non-fiction, or magical fantasy, we have something for
+      every reader.
+    </p>
+  </div>
+</body>
 
-        <!-- Logo -->
-        <div class="mb-4 ml-20 md:ml-4">
-          <img
-            src="../src/asset/images/image.png"
-            alt="Logo"
-            class="ml-[-50px] w-70 h-50 mx-auto"
-          />
-        </div>
+<!-- Explore Book Card -->
 
-        <div class="font-bold">
-          <p>Khan SenSok,</p>
-          <p>Phnom Penh Tmei,</p>
-          <p>Dei Tmei, Street 51</p>
-        </div>
+<!-- popular books section -->
+<section data-aos="fade-up" class="bg-white py-12 px-6 md:px-12">
+  <div class="container mx-auto text-center">
+    <!-- Book Cards -->
+    <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Book 1 -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book7.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+        <h3 class="font-bold text-lg">A Man of the People</h3>
+        <p class="text-gray-600 text-sm mt-2">
+          A political novel that explores corruption and power struggles in
+          post-colonial Africa through the story of a young man.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
       </div>
 
-      <!-- CTA Button -->
-      <div class="text-center mt-6 mb-8">
-        <a
-          href="#"
-          class="bg-orange-500 text-white py-4 px-8 rounded-lg text-lg font-semibold hover:bg-orange-600"
-          >Be our customer</a
-        >
+      <!-- Book 2 -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book8.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+        <h3 class="font-bold text-lg">Anthills of the Savannah</h3>
+        <p class="text-gray-600 text-sm mt-2">
+          A novel that examines the failure of leadership in post-independence
+          Africa, following the lives of three friends.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
+      </div>
+
+      <!-- Book 3 -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book9.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+        <h3 class="font-bold text-lg">Home and Exile</h3>
+        <p class="text-gray-600 text-sm mt-2">
+          A memoir where Achebe reflects on African literature, colonialism,
+          and his personal journey as a writer.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
+      </div>
+      <!-- Book 4 -->
+      <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book10.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+        <h3 class="font-bold text-lg">
+          Harry Potter and the Deathly Hallows <br />
+        </h3>
+        <p>by J.K. Rowling</p>
+        <p class="text-gray-600 text-sm mt-2">
+          This is the final book in the Harry Potter series. It follows Harry,
+          Ron, and Hermione as they search for and destroy.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
+      </div>
+      <!-- Book 5 -->
+      <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book11.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto object-cover mb-4" />
+        <h3 class="font-bold text-lg">
+          Harry Potter and the Half-Blood Prince <br />
+        </h3>
+        <p>by J.K. Rowling</p>
+        <p class="text-gray-600 text-sm mt-2">
+          In this sixth book, Harry learns more about Voldemort's past through
+          private lessons with Professor Dumbledore.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
+      </div>
+      <!-- Book 6 -->
+      <div data-aos="fade-up" class="bg-white shadow-lg rounded-lg p-6">
+        <img src="./src/asset/images/book12.jpg" alt="The 48 Laws of Power" class="w-32 mx-auto mb-4" />
+        <h3 class="font-bold text-lg">The Story of Maya Angelou <br /></h3>
+        <p>by Tiffany D. Jackson</p>
+        <p class="text-gray-600 text-sm mt-2">
+          This is a biography aimed at young readers, showcasing the life of
+          the legendary poet, writer, and civil rights activist Maya Angelou.
+        </p>
+        <button class="bg-orange-500 text-white mt-5 px-6 py-2 rounded-lg text-lg font-semibold hover:bg-orange-600">
+          Button
+        </button>
       </div>
     </div>
-  </footer>
-  <script>
-    document
-      .getElementById("menu-toggle")
-      .addEventListener("click", function () {
-        let menu = document.getElementById("menu");
-        menu.classList.toggle("hidden");
-      });
-  </script>
+  </div>
+</section>
 
-  <!-- aos animation link -->
-  <script>
-    AOS.init();
-  </script>
+<!-- part section -->
+<section data-aos="fade-up" class="py-12 px-4 md:px-8 lg:px-16">
+  <div data-aos="fade-up" class="text-center mb-8">
+    <h2 class="text-3xl font-bold text-gray-800">Our Partners</h2>
+    <p data-aos="fade-up" class="text-gray-600 mt-2">
+      We are proud to collaborate with these amazing organizations.
+    </p>
+  </div>
+  <div data-aos="fade-up"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/aeon-logo.png" alt="Partner Logo" class="w-24 h-24 rounded-full object-cover" />
+    </div>
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/book-public-logo.png" alt="Partner Logo"
+        class="w-24 h-24 rounded-full object-cover" />
+    </div>
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/national-book-logo.png" alt="Partner Logo"
+        class="w-24 h-24 rounded-full object-cover" />
+    </div>
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/national-library-logo.png" alt="Partner Logo"
+        class="w-24 h-24 rounded-full object-cover" />
+    </div>
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/book-store-logo.png" alt="Partner Logo"
+        class="w-24 h-24 rounded-full object-cover" />
+    </div>
+    <div class="p-4 rounded-lg flex items-center justify-center">
+      <img src="./src/asset/images/good-choice-logo.png" alt="Partner Logo"
+        class="w-24 h-24 rounded-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- footer section -->
+<footer data-aos="fade-up" class="bg-green-800 text-white pb-7">
+  <!-- Social Media Links -->
+  <div class="flex flex-wrap md:flex-nowrap text-center">
+    <a href="#"
+      class="flex-1 bg-blue-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-blue-800">
+      <i class="fab fa-facebook mr-2"></i> Facebook
+    </a>
+    <a href="#"
+      class="flex-1 bg-purple-600 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-purple-800">
+      <i class="fab fa-twitter mr-2"></i> Twitter
+    </a>
+    <a href="#"
+      class="flex-1 bg-yellow-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-green-800 hover:bg-yellow-800">
+      <i class="fab fa-instagram mr-2"></i> Instagram
+    </a>
+  </div>
+
+  <div class="container mx-auto px-4 mt-6">
+    <!-- Contact & Address -->
+    <div class="flex flex-col md:flex-row justify-around items-center text-center md:text-left">
+      <div class="font-bold">
+        <p>Phone: +855 96 168 755</p>
+        <p>Email: book.nest168@gmail.com</p>
+      </div>
+
+      <!-- Logo -->
+      <div class="mb-4 ml-20 md:ml-4">
+        <img src="../src/asset/images/image.png" alt="Logo" class="ml-[-50px] w-70 h-50 mx-auto" />
+      </div>
+
+      <div class="font-bold">
+        <p>Khan SenSok,</p>
+        <p>Phnom Penh Tmei,</p>
+        <p>Dei Tmei, Street 51</p>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-6 mb-8">
+      <a href="#" class="bg-orange-500 text-white py-4 px-8 rounded-lg text-lg font-semibold hover:bg-orange-600">Be our
+        customer</a>
+    </div>
+  </div>
+</footer>
+<script>
+  document
+    .getElementById("menu-toggle")
+    .addEventListener("click", function () {
+      let menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    });
+</script>
+
+<!-- aos animation link -->
+<script>
+  AOS.init();
+</script>
+
 </html>
