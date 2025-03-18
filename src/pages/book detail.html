@@ -1,0 +1,164 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>book list</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/style/output.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class=" font-sans">
+        <!-- Header and other sections remain the same -->
+        <header class="bg-white shadow-lg p-4 sticky top-0 z-10">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-3xl font-extrabold text-orange-500 tracking-tight">Booker</h1>
+                <a href="boolist.html"
+                    class="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 transition-all duration-300 shadow-md">Back
+                    to Books</a>
+            </div>
+        </header>
+
+        <section class="container mx-auto py-10">
+            <div id="loading" class="text-center text-gray-500 py-10">
+                <svg class="animate-spin h-8 w-8 mx-auto text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+            </div>
+            <div id="error" class="hidden text-center text-red-500 py-10">
+                Failed to load book details. <button onclick="renderBookDetails()"
+                    class="text-orange-500 underline">Retry</button>
+            </div>
+            <div id="bookDetail"
+                class="hidden bg-white shadow-xl rounded-2xl p-8 max-w-4xl mx-auto flex flex-col md:flex-row gap-8">
+                <div class="flex-shrink-0">
+                    <img id="detailImage" src="" alt="Book Cover"
+                        class="w-64 h-80 object-contain rounded-lg shadow-md border border-gray-200">
+                </div>
+                <div class="flex-1">
+                    <h3 id="detailTitle" class="text-3xl font-bold text-gray-800 mb-3"></h3>
+                    <p id="detailAuthors" class="text-lg text-gray-600 italic mb-2"></p>
+                    <p id="detailPublisher" class="text-md text-gray-500 mb-1"></p>
+                    <p id="detailPublishedDate" class="text-md text-gray-500 mb-4"></p>
+                    <p id="detailDescription" class="text-gray-700 leading-relaxed mb-4 text-justify"></p>
+                    <p id="detailPageCount" class="text-md text-gray-500 mb-4"></p>
+                    <div class="flex items-center justify-between">
+                        <p id="detailPrice" class="text-2xl font-semibold text-orange-500">Rs 500.00</p>
+                        <!-- Updated Buy Now button to redirect to payment.html -->
+                        <button
+                            onclick="window.location.href='payment.html?book_id=' + getQueryParam('id') + '&price=500.00'"
+                            class="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition-all duration-300 shadow-md">Buy
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            async function fetchBookDetails(bookId) {
+                const apiUrl = `https://www.googleapis.com/books/v1/volumes/${bookId}`;
+                try {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error fetching book details:', error);
+                    return null;
+                }
+            }
+
+            async function renderBookDetails() {
+                const bookId = getQueryParam('id');
+                const loadingDiv = document.getElementById('loading');
+                const errorDiv = document.getElementById('error');
+                const bookDetailDiv = document.getElementById('bookDetail');
+
+                if (!bookId) {
+                    loadingDiv.classList.add('hidden');
+                    errorDiv.textContent = 'No book ID provided.';
+                    errorDiv.classList.remove('hidden');
+                    return;
+                }
+
+                const book = await fetchBookDetails(bookId);
+                loadingDiv.classList.add('hidden');
+
+                if (book) {
+                    document.getElementById('detailImage').src = book.volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/150';
+                    document.getElementById('detailTitle').textContent = book.volumeInfo.title || 'Unknown Title';
+                    document.getElementById('detailAuthors').textContent = book.volumeInfo.authors ? `Authors: ${book.volumeInfo.authors.join(', ')}` : 'Unknown Author';
+                    document.getElementById('detailPublisher').textContent = book.volumeInfo.publisher ? `Publisher: ${book.volumeInfo.publisher}` : 'Unknown Publisher';
+                    document.getElementById('detailPublishedDate').textContent = book.volumeInfo.publishedDate ? `Published: ${book.volumeInfo.publishedDate}` : 'Unknown Date';
+                    document.getElementById('detailDescription').textContent = book.volumeInfo.description || 'No description available';
+                    document.getElementById('detailPageCount').textContent = book.volumeInfo.pageCount ? `Pages: ${book.volumeInfo.pageCount}` : 'Unknown Page Count';
+                    document.getElementById('detailPrice').textContent = 'Rs 500.00';
+
+                    bookDetailDiv.classList.remove('hidden');
+                } else {
+                    errorDiv.classList.remove('hidden');
+                }
+            }
+
+            window.onload = renderBookDetails;
+        </script>
+    </div>
+    <footer class="bg-green-800 text-white pb-7">
+        <!-- Social Media Links -->
+        <div class="flex flex-wrap md:flex-nowrap text-center">
+            <a href="#"
+                class="flex-1 bg-blue-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-blue-800">
+                <i class="fab fa-facebook mr-2"></i> Facebook
+            </a>
+            <a href="#"
+                class="flex-1 bg-purple-600 text-white py-3 text-lg font-semibold flex items-center justify-center border-r border-green-800 hover:bg-purple-800">
+                <i class="fab fa-twitter mr-2"></i> Twitter
+            </a>
+            <a href="#"
+                class="flex-1 bg-yellow-500 text-white py-3 text-lg font-semibold flex items-center justify-center border-green-800 hover:bg-yellow-800">
+                <i class="fab fa-instagram mr-2"></i> Instagram
+            </a>
+        </div>
+        <div class="container mx-auto px-4 mt-6">
+            <!-- Contact & Address -->
+            <div class="flex flex-col md:flex-row justify-around items-center text-center md:text-left">
+                <div class="font-bold">
+                    <p>Phone: +855 96 168 755</p>
+                    <p>Email: book.nest168@gmail.com</p>
+                </div>
+
+
+                <div class="mb-4 ml-20 md:ml-4">
+                    <img src="/src/asset/images/image.png" alt="Logo" class="ml-[-50px] w-70 h-50 mx-auto" />
+                </div>
+
+                <div class="font-bold">
+                    <p>Khan SenSok,</p>
+                    <p>Phnom Penh Tmei,</p>
+                    <p>Dei Tmei, Street 51</p>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center mt-6 mb-8">
+                <a href="#"
+                    class="bg-orange-500 text-white py-4 px-8 rounded-lg text-lg font-semibold hover:bg-orange-600">Be
+                    our customer</a>
+            </div>
+        </div>
+    </footer>
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

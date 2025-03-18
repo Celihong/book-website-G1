@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <nav class="bg-green-800 p-4">
         <div class="container mx-auto flex justify-between items-center">
@@ -45,97 +46,105 @@
             </ul>
         </div>
     </nav>
-    <div class="container mx-auto p-4">       
-        <div class="flex justify-between items-center mb-6">
-            <div class="relative w-full max-w-md">
-                <input type="text" id="searchInput" placeholder="Search in BookNet"
-                    class="w-full p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
-                <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-            </div>
-        </div>
-        <div class="flex justify-between items-center mb-6">
-            <div class="flex space-x-4">
-                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Novels</button>
-                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Education</button>
-                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Kids</button>
-                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Coding</button>
-            </div>
-            <div class="relative">
-                <button id="categoryDropdown"
-                    class="px-4 py-2 bg-orange-400 text-white rounded flex items-center hover:bg-orange-500">
-                    Categories <i class="fas fa-caret-down ml-2"></i>
-                </button>
-                <div id="categoryMenu" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg hidden">
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Selling</a>
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Bidding</a>
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Exchange</a>
-                </div>
-            </div>
-        </div>     
-        <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        </div>
-    </div> 
     <script>
-        const API_URL = 'https://openlibrary.org/search.json?q=';
-      async function fetchBooks(query = 'fiction') {
-            try {
-                const response = await fetch(`${API_URL}${encodeURIComponent(query)}&limit=40`);
-                const data = await response.json();
-                displayBooks(data.docs);
-            } catch (error) {
-                console.error('Error fetching books:', error);
-                alert('Failed to load books. Please try again later.');
-            }
-        }   
-        function displayBooks(books) {
-            const bookGrid = document.getElementById('bookGrid');
-            bookGrid.innerHTML = ''; 
-
-            books.forEach(book => {
-                const bookCard = document.createElement('div');
-                bookCard.className = 'bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow';
-                bookCard.innerHTML = `
-                            <img src="https://covers.openlibrary.org/b/id/${book.cover_i || '0'}-M.jpg" alt="${book.title}" class="w-full h-64 object-cover mb-4 rounded">
-                            <h3 class="text-lg font-semibold text-gray-800">${book.title || 'Book Name'}</h3>
-                            <p class="text-gray-600 mb-2">${book.author_name?.[0] || 'Author\'s Name'}</p>
-                            <div class="flex items-center mb-2">
-                                <span class="text-yellow-500">★★★★★</span> <!-- Static rating for now -->
-                            </div>
-                            <p class="text-green-600 font-bold">Rs. 500.00</p>
-                            <button class="mt-4 w-full bg-orange-500 text-white py-2 rounded-full hover:bg-orange-600 transition duration-300 buy-button" data-book="${book.title}">Buy Now</button>
-                        `;
-                bookGrid.appendChild(bookCard);
-            });  
-            document.querySelectorAll('.buy-button').forEach(button => {
-                button.addEventListener('click', handleBuyNow);
+        document
+            .getElementById("menu-toggle")
+            .addEventListener("click", function () {
+                let menu = document.getElementById("menu");
+                menu.classList.toggle("hidden");
             });
-        }
-
-        // Function to handle "Buy Now" click
-        function handleBuyNow(event) {
-            const bookTitle = event.target.getAttribute('data-book');
-            const confirmation = confirm(`Would you like to purchase "${bookTitle}" for Rs. 500.00?`);
-
-            if (confirmation) {
-                alert(`Purchase of "${bookTitle}" confirmed! Redirecting to payment...`);
-                // In a real app, redirect to a payment gateway or backend
-                // Example: window.location.href = `https://your-payment-gateway.com/checkout?book=${encodeURIComponent(bookTitle)}&price=500`;
-            } else {
-                alert(`Purchase of "${bookTitle}" cancelled.`);
-            }
-        }
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            fetchBooks(e.target.value);
-        });
-
-        
-        document.getElementById('categoryDropdown').addEventListener('click', () => {
-            document.getElementById('categoryMenu').classList.toggle('hidden');
-        });
-
-      
-        fetchBooks('fiction');
     </script>
+    <div class="bg-gray-100 font-sans">
+        <section class="container mx-auto py-4">
+            <div class="flex space-x-4 overflow-x-auto">
+                <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Novels</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Education</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Kids</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Education</button>
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Coding</button>
+                <input type="text" id="searchInput" placeholder="Search for books..."
+                    class="border rounded-lg p-2 w-64 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <button onclick="searchBooks()"
+                    class="bg-orange-500 text-white px-4 py-1 rounded-lg hover:bg-orange-600">Search</button>
+
+            </div>
+        </section>
+        <section class="container mx-auto py-6">
+            <h2 class="text-xl font-bold mb-4">Books for You</h2>
+            <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Book cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- JavaScript to Fetch and Display Books -->
+        <script>
+            // Function to fetch books from Google Books API
+            async function fetchBooks(bookTitle) {
+                const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(bookTitle)}`;
+                try {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+                    return data.items || []; // Return the list of books (or empty array if none found)
+                } catch (error) {
+                    console.error('Error fetching books:', error);
+                    return [];
+                }
+            }
+
+            // Function to render books in the grid
+            function renderBooks(books) {
+                const booksGrid = document.getElementById('booksGrid');
+                booksGrid.innerHTML = ''; // Clear existing content
+
+                books.forEach(book => {
+                    const title = book.volumeInfo.title || 'Unknown Title';
+                    const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author';
+                    const image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150';
+                    const bookId = book.id;
+
+                    const bookCard = `
+                        <div class="bg-white shadow rounded-lg p-4">
+                            <img src="${image}" alt="${title}" class="w-full h-40 object-cover rounded">
+                            <h3 class="text-lg font-semibold mt-2 truncate">${title}</h3>
+                            <p class="text-gray-600 truncate">${authors}</p>
+                            <div class="flex items-center mt-1">
+                                <span class="text-yellow-500">★★★★★</span>
+                            </div>
+                            <p class="text-orange-500 font-bold mt-2">Rs 500.00</p>
+                            <button onclick="window.location.href='book detail.html?id=${bookId}'" class="bg-orange-500 text-white px-4 py-2 mt-2 rounded-lg w-full hover:bg-orange-600">Buy Now</button>
+                        </div>
+                    `;
+                    booksGrid.innerHTML += bookCard;
+                });
+            }
+
+            // Function to handle search
+            async function searchBooks() {
+                const searchInput = document.getElementById('searchInput').value.trim();
+                if (!searchInput) {
+                    alert('Please enter a book title to search!');
+                    return;
+                }
+
+                const books = await fetchBooks(searchInput);
+                if (books.length === 0) {
+                    document.getElementById('booksGrid').innerHTML = '<p class="text-center text-gray-500 col-span-full">No books found.</p>';
+                } else {
+                    renderBooks(books);
+                }
+            }
+
+            // Initial load with a default search (e.g., "Fiction")
+            window.onload = () => {
+                fetchBooks('Fiction').then(books => {
+                    renderBooks(books);
+                });
+            };
+        </script>
+    </div>
     <footer class="bg-green-800 text-white pb-7">
         <!-- Social Media Links -->
         <div class="flex flex-wrap md:flex-nowrap text-center">
@@ -160,7 +169,7 @@
                     <p>Email: book.nest168@gmail.com</p>
                 </div>
 
-                
+
                 <div class="mb-4 ml-20 md:ml-4">
                     <img src="/src/asset/images/image.png" alt="Logo" class="ml-[-50px] w-70 h-50 mx-auto" />
                 </div>
@@ -183,6 +192,5 @@
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
-</html>
-</body>
+
 </html>
